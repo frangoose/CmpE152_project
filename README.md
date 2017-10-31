@@ -1,7 +1,7 @@
 # CmpE152_project
-##Final Project
+## Final Project
 
-###Defined Data Types:
+### Defined Data Types:
 Variables
 Bitvectors
 String
