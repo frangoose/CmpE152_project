@@ -32,7 +32,7 @@ if_stat:
 	;
 
 expr:	expr mul_div_op expr
-	|	expr add_div_op expr
+	|	expr add_sub_op expr
 	|	expr rel_op expr
 	|	number
 	|	IDENTIFIER
@@ -44,7 +44,7 @@ number: sign? DIGIT ;
 sign: '+' | '-' ;
 
 mul_div_op:	MUL_OP | DIV_OP ;
-add_div_op:	ADD_OP | SUB_OP ;
+add_sub_op:	ADD_OP | SUB_OP ;
 rel_op:	
 	; 
 
