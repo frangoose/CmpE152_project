@@ -2,23 +2,9 @@
 
 grammar Unbreakable;
 
-prog: (stat NEWLINE)+ ;
+prog: stat+ ;
 
-
-stat:	expr ';'
-	|	ID '=' expr ';' 						//assignment statement
-	|	varDeclar ';'							//variable declaration
-	|	'if' ('(' expr ')') stat ('else' stat) //if-else statement 
-	;
-
-expr:	expr ('*'| '/') expr
-	|	expr ('+' | '-') expr
-	|	DIGIT
-	|	ID
-	|	'(' expr ')'
-	;
-
-varDeclar:	ID primitiveType	
+varDeclar:	IDENTIFIER primitiveType	
 	;
 	
 primitiveType
@@ -31,12 +17,48 @@ primitiveType
 	|	'Integer'
 	;
 
-ID : [a-zA-Z0-9]+ ;
+stat:	if_stat
+	|	assignment_stat
+	|	expr ';' 						
+	|	varDeclar ';'	
+	;
 
+assignment_stat:
+	IDENTIFIER '=' expr
+	;	
+
+if_stat:	
+	IF ('(' expr ')') stat (ELSE stat)? //if-else statement 
+	;
+
+expr:	expr mul_div_op expr
+	|	expr add_div_op expr
+	|	expr rel_op expr
+	|	number
+	|	IDENTIFIER
+	|	'(' expr ')'
+	;
+
+variable: IDENTIFIER ;
+number: sign? DIGIT ;
+sign: '+' | '-' ;
+
+mul_div_op:	MUL_OP | DIV_OP ;
+add_div_op:	ADD_OP | SUB_OP ;
+rel_op:	
+	; 
+
+//TOKENS
+
+IF: 'if' ;
+ELSE: 'else' ;
+
+MUL_OP: '*' ;
+DIV_OP: '/' ;
+ADD_OP: '+' ;
+SUB_OP: '-' ;
+
+IDENTIFIER : [a-zA-Z][a-zA-Z0-9]* ;
 DIGIT : [0-9]+ ;
-
-
-NEWLINE : '/r'? '\n' ;
-
-
+NEWLINE : '/r'? '\n' -> skip;
 WS : [ \t]+ -> skip ;
