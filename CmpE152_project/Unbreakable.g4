@@ -32,7 +32,7 @@ if_stat:
 	;
 
 expr:	expr mul_div_op expr
-	|	expr add_div_op expr
+	|	expr add_sub_op expr
 	|	expr rel_op expr
 	|	number
 	|	IDENTIFIER
@@ -44,9 +44,8 @@ number: sign? DIGIT ;
 sign: '+' | '-' ;
 
 mul_div_op:	MUL_OP | DIV_OP ;
-add_div_op:	ADD_OP | SUB_OP ;
-rel_op:	
-	; 
+add_sub_op:	ADD_OP | SUB_OP ;
+rel_op:	EQ_OP | NEQ_OP ; 
 
 //TOKENS
 
@@ -57,6 +56,9 @@ MUL_OP: '*' ;
 DIV_OP: '/' ;
 ADD_OP: '+' ;
 SUB_OP: '-' ;
+
+EQ_OP:	'==' ;
+NEQ_OP:	'!=' ;
 
 IDENTIFIER : [a-zA-Z][a-zA-Z0-9]* ;
 DIGIT : [0-9]+ ;
