@@ -2,3 +2,5 @@ key1 64Key;
 key2 128Key;
 A Integer;
 
+if (key1 == key2)
+	key1 = key2;
