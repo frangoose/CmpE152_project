@@ -20,7 +20,12 @@ primitiveType
 stat:	if_stat
 	|	assignment_stat
 	|	expr ';' 						
-	|	varDeclar ';'	
+	|	varDeclar ';'
+	|	compound_stat	
+	;
+
+compound_stat:
+	'{' (stat ';')* '}'
 	;
 
 assignment_stat:
@@ -28,7 +33,7 @@ assignment_stat:
 	;	
 
 if_stat:	
-	IF ('(' expr ')') stat (ELSE stat)? //if-else statement 
+	IF ('(' expr ')') compound_stat (ELSE compound_stat)? //if-else statement 
 	;
 
 expr:	expr mul_div_op expr
@@ -45,6 +50,7 @@ sign: '+' | '-' ;
 
 mul_div_op:	MUL_OP | DIV_OP ;
 add_sub_op:	ADD_OP | SUB_OP ;
+
 rel_op:	EQ_OP | NEQ_OP ; 
 
 //TOKENS

@@ -3,4 +3,20 @@ key2 128Key;
 A Integer;
 
 if (key1 == key2)
+{
 	key1 = key2;
+	key1 = A * key2;
+}
+else{
+	key2 = key1;
+}
+
+B Integer;
+
+if (key1 != key2)
+{
+	key2 = key1;
+}
+else{
+	key1 = key1 + key1 + key2;
+}
