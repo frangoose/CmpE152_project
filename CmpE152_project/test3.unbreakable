@@ -1,0 +1,10 @@
+keyOne 32Key;
+keyTwo 16Key;
+
+BV BitVector;
+
+if (BV != keyOne + keyTwo){
+	keyThree 64Key;
+	
+	BV = keyThree;
+}

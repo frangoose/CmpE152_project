@@ -1,0 +1,9 @@
+keyOne 32Key;
+keyTwo 16Key;
+
+BV BitVector;
+
+BV = keyOne * keyTwo;
+BV = keyOne / keyTwo;
+BV = keyOne + keyTwo;
+BV = keyOne - keyTwo;

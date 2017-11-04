@@ -19,8 +19,8 @@ primitiveType
 
 stat:	if_stat
 	|	assignment_stat
-	|	expr ';' 						
-	|	varDeclar ';'
+	|	expr ';'* 						
+	|	varDeclar ';'*
 	|	compound_stat	
 	;
 
@@ -29,7 +29,7 @@ compound_stat:
 	;
 
 assignment_stat:
-	IDENTIFIER '=' expr
+	IDENTIFIER '=' expr ';'*
 	;	
 
 if_stat:	
